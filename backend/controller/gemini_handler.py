@@ -136,6 +136,14 @@ Your task is to deeply analyze any cricket player's career and respond with a **
     }
   },
   "summary": "<concise summary of player’s career, strengths, weaknesses, achievements>",
+  "achievements": [
+    "ICC Cricketer of the Year 2017",
+    "Fastest to 8000, 9000, 10000 ODI runs",
+    "Captain of the decade (2010s)",
+    "Most centuries in IPL history (as of 2024)"
+  ],
+  "image_url": "https://en.wikipedia.org/w/api.php?action=query&titles=PLAYER_NAME&prop=pageimages&format=json&pithumbsize=500
+",
   "note": "All data is accurate up to January 2025."
 }
 
@@ -146,6 +154,7 @@ Instructions:
 - Use numeric values for averages, strike rates, etc., but strings for best scores and best bowling (e.g., "6/45").
 - Follow the order: Player Profile → Role Info → Stats per Format (Test, ODI, T20I, IPL) → Summary → Note.
 - Do not include markdown, headings, or extra commentary. Only output the pure JSON block.
+- image url should be real not fake and genuine also so tah it can be used.
 """
 
 model = genai.GenerativeModel(
@@ -190,7 +199,7 @@ def get_player_stats(player_name: str) -> dict:
 
 
 if __name__ == "__main__":
-    player_name = "Virat Kohli"
+    player_name =  input(">>> ")
     result = get_player_stats(player_name)
 
     if "error" in result:
