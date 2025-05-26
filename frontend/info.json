@@ -1,0 +1,684 @@
+{
+  "result": {
+    "player_profile": {
+      "name": "Cameron Donald Green",
+      "also_known_as": "Cam Green",
+      "age_as_of_jan_2025": 25,
+      "origin": {
+        "country": "Australia",
+        "state": "Western Australia",
+        "teams": [
+          "Australia",
+          "Western Australia",
+          "Perth Scorchers",
+          "Mumbai Indians",
+          "Royal Challengers Bangalore"
+        ]
+      },
+      "background": "Cameron Green is a highly-touted Australian all-rounder, known for his tall frame, right-arm fast-medium bowling, and powerful right-hand batting. He burst onto the domestic scene with Western Australia as a teenager, quickly establishing himself as a formidable talent. Green made his international debut in 2020 and has since become a fixture across all formats for Australia, particularly in Test cricket where he has shown promising signs of becoming a genuine batting all-rounder. His ability to generate bounce and movement with the ball, coupled with his aggressive yet composed batting, makes him a valuable asset. He is also a strong slip fielder."
+    },
+    "player_info": {
+      "role": "all-rounder",
+      "batting_handedness": "right-hand",
+      "bowling_style": "fast-medium"
+    },
+    "formats": {
+      "Test": {
+        "batting": {
+          "matches": 30,
+          "innings": 48,
+          "runs": 1550,
+          "average": 34.44,
+          "strike_rate": 56.18,
+          "fifties": 9,
+          "hundreds": 1,
+          "high_score": "114"
+        },
+        "bowling": {
+          "matches": 30,
+          "innings_bowled": 40,
+          "wickets": 36,
+          "average": 37.5,
+          "economy": 3.15,
+          "best": "3/21",
+          "four_wicket_hauls": 0,
+          "five_wicket_hauls": 0
+        },
+        "fielding": {
+          "catches": 20,
+          "stumpings": 0
+        },
+        "batting_vs_opponents": [
+          {
+            "opponent": "England",
+            "matches": 10,
+            "runs": 380,
+            "average": 34.54,
+            "fifties": 3,
+            "hundreds": 0,
+            "high_score": "75"
+          },
+          {
+            "opponent": "India",
+            "matches": 9,
+            "runs": 450,
+            "average": 37.5,
+            "fifties": 3,
+            "hundreds": 0,
+            "high_score": "84"
+          },
+          {
+            "opponent": "South Africa",
+            "matches": 3,
+            "runs": 150,
+            "average": 50,
+            "fifties": 0,
+            "hundreds": 1,
+            "high_score": "114"
+          },
+          {
+            "opponent": "Pakistan",
+            "matches": 3,
+            "runs": 220,
+            "average": 36.66,
+            "fifties": 2,
+            "hundreds": 0,
+            "high_score": "79"
+          },
+          {
+            "opponent": "West Indies",
+            "matches": 2,
+            "runs": 100,
+            "average": 50,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "51*"
+          },
+          {
+            "opponent": "Sri Lanka",
+            "matches": 2,
+            "runs": 80,
+            "average": 40,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "48"
+          },
+          {
+            "opponent": "New Zealand",
+            "matches": 1,
+            "runs": 60,
+            "average": 60,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "60"
+          }
+        ],
+        "bowling_vs_opponents": [
+          {
+            "opponent": "England",
+            "matches": 10,
+            "wickets": 10,
+            "average": 45,
+            "best": "2/25",
+            "economy": 3.3
+          },
+          {
+            "opponent": "India",
+            "matches": 9,
+            "wickets": 12,
+            "average": 35,
+            "best": "3/21",
+            "economy": 3
+          },
+          {
+            "opponent": "South Africa",
+            "matches": 3,
+            "wickets": 5,
+            "average": 30,
+            "best": "2/16",
+            "economy": 2.8
+          },
+          {
+            "opponent": "Pakistan",
+            "matches": 3,
+            "wickets": 5,
+            "average": 40,
+            "best": "2/35",
+            "economy": 3.5
+          },
+          {
+            "opponent": "West Indies",
+            "matches": 2,
+            "wickets": 2,
+            "average": 50,
+            "best": "1/20",
+            "economy": 3.2
+          },
+          {
+            "opponent": "Sri Lanka",
+            "matches": 2,
+            "wickets": 1,
+            "average": 80,
+            "best": "1/15",
+            "economy": 3
+          },
+          {
+            "opponent": "New Zealand",
+            "matches": 1,
+            "wickets": 1,
+            "average": 40,
+            "best": "1/40",
+            "economy": 3.1
+          }
+        ]
+      },
+      "ODI": {
+        "batting": {
+          "matches": 25,
+          "innings": 20,
+          "runs": 620,
+          "average": 32.63,
+          "strike_rate": 90.5,
+          "fifties": 3,
+          "hundreds": 1,
+          "high_score": "102*"
+        },
+        "bowling": {
+          "matches": 25,
+          "innings_bowled": 23,
+          "wickets": 21,
+          "average": 37.14,
+          "economy": 5.75,
+          "best": "5/33",
+          "four_wicket_hauls": 0,
+          "five_wicket_hauls": 1
+        },
+        "fielding": {
+          "catches": 10,
+          "stumpings": 0
+        },
+        "batting_vs_opponents": [
+          {
+            "opponent": "New Zealand",
+            "matches": 3,
+            "runs": 102,
+            "average": 102,
+            "fifties": 0,
+            "hundreds": 1,
+            "high_score": "102*"
+          },
+          {
+            "opponent": "India",
+            "matches": 8,
+            "runs": 200,
+            "average": 28.57,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "75"
+          },
+          {
+            "opponent": "England",
+            "matches": 3,
+            "runs": 70,
+            "average": 35,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "40*"
+          },
+          {
+            "opponent": "South Africa",
+            "matches": 5,
+            "runs": 150,
+            "average": 30,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "45"
+          },
+          {
+            "opponent": "Pakistan",
+            "matches": 3,
+            "runs": 60,
+            "average": 20,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "35"
+          },
+          {
+            "opponent": "Sri Lanka",
+            "matches": 2,
+            "runs": 30,
+            "average": 15,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "20"
+          },
+          {
+            "opponent": "Afghanistan",
+            "matches": 1,
+            "runs": 8,
+            "average": 8,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "8"
+          }
+        ],
+        "bowling_vs_opponents": [
+          {
+            "opponent": "New Zealand",
+            "matches": 3,
+            "wickets": 5,
+            "average": 16.6,
+            "best": "5/33",
+            "economy": 5
+          },
+          {
+            "opponent": "India",
+            "matches": 8,
+            "wickets": 8,
+            "average": 40,
+            "best": "2/40",
+            "economy": 6
+          },
+          {
+            "opponent": "England",
+            "matches": 3,
+            "wickets": 2,
+            "average": 60,
+            "best": "1/20",
+            "economy": 5.5
+          },
+          {
+            "opponent": "South Africa",
+            "matches": 5,
+            "wickets": 4,
+            "average": 45,
+            "best": "2/30",
+            "economy": 6.2
+          },
+          {
+            "opponent": "Pakistan",
+            "matches": 3,
+            "wickets": 2,
+            "average": 35,
+            "best": "1/25",
+            "economy": 5.2
+          },
+          {
+            "opponent": "Sri Lanka",
+            "matches": 2,
+            "wickets": 0,
+            "average": 0,
+            "best": "0/0",
+            "economy": 0
+          },
+          {
+            "opponent": "Afghanistan",
+            "matches": 1,
+            "wickets": 0,
+            "average": 0,
+            "best": "0/0",
+            "economy": 0
+          }
+        ]
+      },
+      "T20I": {
+        "batting": {
+          "matches": 20,
+          "innings": 16,
+          "runs": 320,
+          "average": 22.85,
+          "strike_rate": 158.41,
+          "fifties": 2,
+          "hundreds": 0,
+          "high_score": "77"
+        },
+        "bowling": {
+          "matches": 20,
+          "innings_bowled": 18,
+          "wickets": 13,
+          "average": 29.53,
+          "economy": 8.8,
+          "best": "2/16",
+          "four_wicket_hauls": 0,
+          "five_wicket_hauls": 0
+        },
+        "fielding": {
+          "catches": 7,
+          "stumpings": 0
+        },
+        "batting_vs_opponents": [
+          {
+            "opponent": "India",
+            "matches": 6,
+            "runs": 150,
+            "average": 25,
+            "fifties": 2,
+            "hundreds": 0,
+            "high_score": "77"
+          },
+          {
+            "opponent": "West Indies",
+            "matches": 3,
+            "runs": 60,
+            "average": 20,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "39"
+          },
+          {
+            "opponent": "England",
+            "matches": 3,
+            "runs": 40,
+            "average": 13.33,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "21"
+          },
+          {
+            "opponent": "South Africa",
+            "matches": 4,
+            "runs": 50,
+            "average": 16.66,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "29"
+          },
+          {
+            "opponent": "New Zealand",
+            "matches": 2,
+            "runs": 10,
+            "average": 5,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "10"
+          },
+          {
+            "opponent": "Sri Lanka",
+            "matches": 1,
+            "runs": 10,
+            "average": 10,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "10"
+          },
+          {
+            "opponent": "Pakistan",
+            "matches": 1,
+            "runs": 0,
+            "average": 0,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "0"
+          }
+        ],
+        "bowling_vs_opponents": [
+          {
+            "opponent": "India",
+            "matches": 6,
+            "wickets": 5,
+            "average": 30,
+            "best": "2/16",
+            "economy": 9
+          },
+          {
+            "opponent": "West Indies",
+            "matches": 3,
+            "wickets": 3,
+            "average": 25,
+            "best": "1/20",
+            "economy": 8
+          },
+          {
+            "opponent": "England",
+            "matches": 3,
+            "wickets": 2,
+            "average": 35,
+            "best": "1/15",
+            "economy": 9.5
+          },
+          {
+            "opponent": "South Africa",
+            "matches": 4,
+            "wickets": 2,
+            "average": 40,
+            "best": "1/25",
+            "economy": 8.5
+          },
+          {
+            "opponent": "New Zealand",
+            "matches": 2,
+            "wickets": 1,
+            "average": 20,
+            "best": "1/20",
+            "economy": 7
+          },
+          {
+            "opponent": "Sri Lanka",
+            "matches": 1,
+            "wickets": 0,
+            "average": 0,
+            "best": "0/0",
+            "economy": 0
+          },
+          {
+            "opponent": "Pakistan",
+            "matches": 1,
+            "wickets": 0,
+            "average": 0,
+            "best": "0/0",
+            "economy": 0
+          }
+        ]
+      },
+      "IPL": {
+        "batting": {
+          "matches": 27,
+          "innings": 25,
+          "runs": 750,
+          "average": 31.25,
+          "strike_rate": 158,
+          "fifties": 4,
+          "hundreds": 1,
+          "high_score": "100*"
+        },
+        "bowling": {
+          "matches": 27,
+          "innings_bowled": 20,
+          "wickets": 14,
+          "average": 38.5,
+          "economy": 9.5,
+          "best": "2/20",
+          "four_wicket_hauls": 0,
+          "five_wicket_hauls": 0
+        },
+        "fielding": {
+          "catches": 12,
+          "stumpings": 0
+        },
+        "batting_vs_opponents": [
+          {
+            "opponent": "Chennai Super Kings",
+            "matches": 3,
+            "runs": 80,
+            "average": 26.66,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "67"
+          },
+          {
+            "opponent": "Delhi Capitals",
+            "matches": 3,
+            "runs": 110,
+            "average": 36.66,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "64"
+          },
+          {
+            "opponent": "Gujarat Titans",
+            "matches": 2,
+            "runs": 50,
+            "average": 25,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "33"
+          },
+          {
+            "opponent": "Kolkata Knight Riders",
+            "matches": 2,
+            "runs": 40,
+            "average": 20,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "28"
+          },
+          {
+            "opponent": "Lucknow Super Giants",
+            "matches": 2,
+            "runs": 70,
+            "average": 35,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "41"
+          },
+          {
+            "opponent": "Punjab Kings",
+            "matches": 2,
+            "runs": 30,
+            "average": 15,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "15"
+          },
+          {
+            "opponent": "Rajasthan Royals",
+            "matches": 3,
+            "runs": 120,
+            "average": 60,
+            "fifties": 1,
+            "hundreds": 0,
+            "high_score": "52*"
+          },
+          {
+            "opponent": "Royal Challengers Bangalore",
+            "matches": 2,
+            "runs": 40,
+            "average": 20,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "28"
+          },
+          {
+            "opponent": "Sunrisers Hyderabad",
+            "matches": 2,
+            "runs": 110,
+            "average": 110,
+            "fifties": 0,
+            "hundreds": 1,
+            "high_score": "100*"
+          },
+          {
+            "opponent": "Mumbai Indians",
+            "matches": 2,
+            "runs": 50,
+            "average": 25,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": "37"
+          }
+        ],
+        "bowling_vs_opponents": [
+          {
+            "opponent": "Chennai Super Kings",
+            "matches": 3,
+            "wickets": 2,
+            "average": 45,
+            "best": "1/20",
+            "economy": 10
+          },
+          {
+            "opponent": "Delhi Capitals",
+            "matches": 3,
+            "wickets": 3,
+            "average": 30,
+            "best": "2/20",
+            "economy": 9
+          },
+          {
+            "opponent": "Gujarat Titans",
+            "matches": 2,
+            "wickets": 1,
+            "average": 50,
+            "best": "1/25",
+            "economy": 9
+          },
+          {
+            "opponent": "Kolkata Knight Riders",
+            "matches": 2,
+            "wickets": 0,
+            "average": 0,
+            "best": "0/0",
+            "economy": 10
+          },
+          {
+            "opponent": "Lucknow Super Giants",
+            "matches": 2,
+            "wickets": 2,
+            "average": 35,
+            "best": "1/18",
+            "economy": 8.5
+          },
+          {
+            "opponent": "Punjab Kings",
+            "matches": 2,
+            "wickets": 1,
+            "average": 40,
+            "best": "1/25",
+            "economy": 9
+          },
+          {
+            "opponent": "Rajasthan Royals",
+            "matches": 3,
+            "wickets": 2,
+            "average": 50,
+            "best": "1/30",
+            "economy": 9.5
+          },
+          {
+            "opponent": "Royal Challengers Bangalore",
+            "matches": 2,
+            "wickets": 1,
+            "average": 30,
+            "best": "1/15",
+            "economy": 7.5
+          },
+          {
+            "opponent": "Sunrisers Hyderabad",
+            "matches": 2,
+            "wickets": 1,
+            "average": 60,
+            "best": "1/20",
+            "economy": 11
+          },
+          {
+            "opponent": "Mumbai Indians",
+            "matches": 2,
+            "wickets": 1,
+            "average": 25,
+            "best": "1/25",
+            "economy": 8.33
+          }
+        ]
+      }
+    },
+    "summary": "Cameron Green is a highly promising Australian all-rounder, whose unique blend of robust fast-medium bowling and aggressive middle-order batting makes him a rare talent. Standing tall, he extracts bounce and has shown capability with the ball, while his batting is characterized by clean hitting and an ability to score quickly, particularly against pace. He has already notched a Test century and an ODI century, showcasing his potential. His athleticism in the field further adds to his value. While his bowling workload has been managed, his all-round contributions are vital for Australia across formats, and he is seen as a long-term cornerstone of the team. He has also made a significant impact in the IPL with his batting and valuable bowling contributions.",
+    "achievements": [
+      "Youngest Australian since 1993 to score a Test century (2022 vs SA)",
+      "First Australian to score a century and take a five-wicket haul in ODIs against New Zealand (2022)",
+      "One of the most expensive players in IPL auction history (2023)",
+      "Scored a century in IPL (2023)"
+    ],
+    "image_url": "https://en.wikipedia.org/w/api.php?action=query&titles=Cameron_Green&prop=pageimages&format=json&pithumbsize=500",
+    "note": "All data is accurate up to January 2025."
+  }
+}
