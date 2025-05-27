@@ -8,48 +8,65 @@ interface Props {
 
 export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
   return (
-    <section className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md border border-gray-200">
-      <h2 className="text-3xl font-bold mb-2 text-gray-900">
-        Full Name: <span className="font-normal">{profile.name}</span>
-      </h2>
-      <h3 className="text-xl font-semibold mb-4 text-gray-700">
-        Also Known As: <span className="font-normal">{profile.also_known_as}</span>
-      </h3>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-6 text-gray-800">
-        <p>
-          <span className="font-semibold">Age (as of Jan 2025):</span> {profile.age_as_of_jan_2025}
-        </p>
-        <p>
-          <span className="font-semibold">Role:</span> {info.role}
-        </p>
-        <p>
-          <span className="font-semibold">Batting Style:</span> {info.batting_handedness}
-        </p>
-        <p>
-          <span className="font-semibold">Bowling Style:</span> {info.bowling_style}
+    <section className="max-w-4xl mx-auto p-8 rounded-2xl shadow-2xl border border-indigo-700 
+      bg-gradient-to-br from-indigo-800 via-blue-900 to-slate-900 text-gray-100 my-10"
+    >
+      {/* Full Name and AKA */}
+      <div className="mb-6">
+        <h2 className="text-4xl font-extrabold mb-1 drop-shadow-md">
+          {profile.name}
+        </h2>
+        <p className="text-lg text-yellow-300 italic drop-shadow">
+          aka {profile.also_known_as}
         </p>
       </div>
 
-      <h3 className="text-2xl font-semibold mb-3 text-gray-800 border-b border-gray-300 pb-1">
-        Origin & Teams
-      </h3>
-      <ul className="mb-6 text-gray-700 space-y-1">
-        <li>
-          <span className="font-semibold">Country:</span> {profile.origin.country}
-        </li>
-        <li>
-          <span className="font-semibold">State:</span> {profile.origin.state}
-        </li>
-        <li>
-          <span className="font-semibold">Teams Played For:</span> {profile.origin.teams.join(", ")}
-        </li>
-      </ul>
+      {/* Key Details Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {[
+          { label: "Age (Jan 2025)", value: profile.age_as_of_jan_2025 },
+          { label: "Role", value: info.role },
+          { label: "Batting Style", value: info.batting_handedness },
+          { label: "Bowling Style", value: info.bowling_style },
+        ].map(({ label, value }) => (
+          <div
+            key={label}
+            className="bg-gradient-to-tr from-indigo-700 via-blue-700 to-slate-800 
+              p-5 rounded-lg shadow-lg border border-indigo-600"
+          >
+            <span className="text-sm font-medium text-indigo-300">{label}</span>
+            <p className="text-xl font-semibold capitalize mt-1">{value}</p>
+          </div>
+        ))}
+      </div>
 
-      <h3 className="text-2xl font-semibold mb-3 text-gray-800 border-b border-gray-300 pb-1">
-        Background
-      </h3>
-      <p className="text-gray-700 leading-relaxed">{profile.background}</p>
+      {/* Origin & Teams */}
+      <div className="mb-8">
+        <h3 className="text-2xl font-semibold mb-3 border-b border-indigo-600 pb-1 drop-shadow-sm">
+          Origin & Teams
+        </h3>
+        <ul className="space-y-2 text-indigo-200 mt-3">
+          <li>
+            <span className="font-semibold text-yellow-300">Country:</span> {profile.origin.country}
+          </li>
+          <li>
+            <span className="font-semibold text-yellow-300">State:</span> {profile.origin.state}
+          </li>
+          <li>
+            <span className="font-semibold text-yellow-300">Teams Played For:</span> {profile.origin.teams.join(", ")}
+          </li>
+        </ul>
+      </div>
+
+      {/* Background */}
+      <div>
+        <h3 className="text-2xl font-semibold mb-3 border-b border-indigo-600 pb-1 drop-shadow-sm">
+          Background
+        </h3>
+        <p className="text-indigo-200 leading-relaxed mt-2 text-justify">
+          {profile.background}
+        </p>
+      </div>
     </section>
   );
 };
