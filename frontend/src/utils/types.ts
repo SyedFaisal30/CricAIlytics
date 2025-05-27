@@ -1,17 +1,17 @@
 export interface OpponentStats {
   opponent: string;
   matches: number;
-  runs?: number;
-  average?: number;
-  strike_rate?: number;       // Added strike rate for batting vs opponent
-  fifties?: number;
-  hundreds?: number;
-  high_score?: string;
-  wickets?: number;
-  best?: string;              // Best bowling figures vs opponent
-  economy?: number;
-  four_wicket_hauls?: number; // Optional bowling milestones vs opponent
-  five_wicket_hauls?: number;
+  runs: number;
+  average: number;
+  strike_rate: number;
+  fifties: number;
+  hundreds: number;
+  high_score: string;
+  wickets: number;
+  best: string;
+  economy: number;
+  four_wicket_hauls: number;
+  five_wicket_hauls: number;
 }
 
 export interface BattingStats {
@@ -19,11 +19,11 @@ export interface BattingStats {
   innings: number;
   runs: number;
   average: number;
-  strike_rate?: number;
+  strike_rate: number;
   fifties: number;
   hundreds: number;
   high_score: string;
-  batting_vs_opponents?: OpponentStats[];  // Opponent-wise batting details
+  batting_vs_opponents: OpponentStats[];
 }
 
 export interface BowlingStats {
@@ -33,22 +33,23 @@ export interface BowlingStats {
   average: number;
   economy: number;
   best: string;
-  four_wicket_hauls?: number;
-  five_wicket_hauls?: number;
-  bowling_vs_opponents?: OpponentStats[]; // Opponent-wise bowling details
+  four_wicket_hauls: number;
+  five_wicket_hauls: number;
+  bowling_vs_opponents: OpponentStats[];
 }
 
 export interface FieldingStats {
   catches: number;
   stumpings: number;
-  run_outs?: number;        // Added possible missing field for fielding
-  // You can add more fielding related stats if needed
+  run_outs: number;
 }
 
 export interface FormatStats {
   batting: BattingStats;
   bowling: BowlingStats;
   fielding: FieldingStats;
+  batting_vs_opponents: OpponentStats[];
+  bowling_vs_opponents: OpponentStats[];
 }
 
 export interface PlayerFormats {
@@ -56,7 +57,6 @@ export interface PlayerFormats {
   ODI: FormatStats;
   T20I: FormatStats;
   IPL: FormatStats;
-  // You can add more formats here if needed, like "FirstClass", "ListA", etc.
 }
 
 export interface PlayerOrigin {
