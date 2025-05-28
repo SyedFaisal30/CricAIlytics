@@ -8,8 +8,21 @@ interface Props {
 
 export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
   return (
-    <section className="max-w-4xl mx-auto p-8 rounded-2xl shadow-2xl border border-indigo-700 
-      bg-gradient-to-br from-indigo-800 via-blue-900 to-slate-900 text-gray-100 my-10"
+    <section
+      className="
+        w-full
+        max-w-6xl
+        mx-auto
+        px-4 sm:px-6 lg:px-8
+        p-8
+        rounded-2xl
+        shadow-2xl
+        border
+        border-indigo-700
+        bg-gradient-to-br from-indigo-800 via-blue-900 to-slate-900
+        text-gray-100
+        my-10
+      "
     >
       {/* Full Name and AKA */}
       <div className="mb-6">
@@ -31,8 +44,10 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
         ].map(({ label, value }) => (
           <div
             key={label}
-            className="bg-gradient-to-tr from-indigo-700 via-blue-700 to-slate-800 
-              p-5 rounded-lg shadow-lg border border-indigo-600"
+            className="
+              bg-gradient-to-tr from-indigo-700 via-blue-700 to-slate-800 
+              p-5 rounded-lg shadow-lg border border-indigo-600
+            "
           >
             <span className="text-sm font-medium text-indigo-300">{label}</span>
             <p className="text-xl font-semibold capitalize mt-1">{value}</p>
