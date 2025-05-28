@@ -10,16 +10,16 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
   return (
     <section
       className="
-        w-full
-        max-w-6xl
+        w-[95vw]
         mx-auto
         px-4 sm:px-6 lg:px-8
         p-8
         rounded-2xl
         shadow-2xl
         border
-        border-indigo-700
-        bg-gradient-to-br from-indigo-800 via-blue-900 to-slate-900
+        border-slate-100
+        bg-gradient-to-br from-[#c2d2f9] via-[#6f9eff] to-[#66a6ff]
+
         text-gray-100
         my-10
       "
@@ -35,7 +35,7 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
       </div>
 
       {/* Key Details Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         {[
           { label: "Age (Jan 2025)", value: profile.age_as_of_jan_2025 },
           { label: "Role", value: info.role },
@@ -45,11 +45,11 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
           <div
             key={label}
             className="
-              bg-gradient-to-tr from-indigo-700 via-blue-700 to-slate-800 
-              p-5 rounded-lg shadow-lg border border-indigo-600
+              bg-gradient-to-tr from-[#c2d2f9] via-[#6f9eff] to-[#66a6ff]
+              p-5 rounded-lg shadow-lg border border-slate-100
             "
           >
-            <span className="text-sm font-medium text-indigo-300">{label}</span>
+            <span className="text-sm font-medium text-indigo-100">{label}</span>
             <p className="text-xl font-semibold capitalize mt-1">{value}</p>
           </div>
         ))}
@@ -57,10 +57,10 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
 
       {/* Origin & Teams */}
       <div className="mb-8">
-        <h3 className="text-2xl font-semibold mb-3 border-b border-indigo-600 pb-1 drop-shadow-sm">
+        <h3 className="text-2xl font-semibold mb-3 border-b border-slate-100 pb-1 drop-shadow-sm">
           Origin & Teams
         </h3>
-        <ul className="space-y-2 text-indigo-200 mt-3">
+        <ul className="space-y-2 text-slate-100 mt-3">
           <li>
             <span className="font-semibold text-yellow-300">Country:</span> {profile.origin.country}
           </li>
@@ -75,10 +75,10 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
 
       {/* Background */}
       <div>
-        <h3 className="text-2xl font-semibold mb-3 border-b border-indigo-600 pb-1 drop-shadow-sm">
+        <h3 className="text-2xl font-semibold mb-3 border-b border-slate-100 pb-1 drop-shadow-sm">
           Background
         </h3>
-        <p className="text-indigo-200 leading-relaxed mt-2 text-justify">
+        <p className="text-slate-100 leading-relaxed mt-2 text-justify">
           {profile.background}
         </p>
       </div>

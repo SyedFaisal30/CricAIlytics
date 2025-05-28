@@ -43,7 +43,7 @@ const IndividualOpponentChart: React.FC<{
   if (!data || data.length === 0) return null;
 
   return (
-    <div className="w-full mb-8 p-4 rounded-2xl shadow-lg bg-gradient-to-r from-indigo-800 via-indigo-900 to-indigo-800 text-white">
+    <div className="w-[full] mb-8 p-4 rounded-2xl shadow-lg bg-gradient-to-r from-[#c2d2f9] via-[#6f9eff] to-[#66a6ff] text-white">
       <h5 className="text-xl font-semibold mb-3">{title}</h5>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart
@@ -74,9 +74,9 @@ const IndividualOpponentChart: React.FC<{
 
 
 const StatCard = ({ label, value }: { label: string; value: number }) => (
-  <div className="flex flex-col items-center justify-center bg-gradient-to-br from-white via-slate-100 to-slate-200 text-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-shadow duration-300">
-    <span className="text-sm font-medium text-gray-500">{label}</span>
-    <span className="text-3xl font-bold text-indigo-700 mt-1">{value}</span>
+  <div className="flex flex-col items-center justify-center bg-gradient-to-br from-[#c2d2f9] via-[#6f9eff] to-[#66a6ff] text-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-shadow duration-300">
+    <span className="text-sm font-medium text-slate-100">{label}</span>
+    <span className="text-3xl font-bold text-slate-200 mt-1">{value}</span>
   </div>
 );
 
@@ -84,8 +84,8 @@ export const FormatStatsComponent: React.FC<Props> = ({ formatName, stats }) => 
   const { batting, bowling, fielding } = stats;
 
   return (
-    <section className="max-w-6xl mx-auto p-10 bg-gradient-to-br from-indigo-700 via-blue-700 rounded-2xl shadow-2xl border border-gray-200 my-12">
-      <h3 className="text-4xl font-extrabold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">
+    <section className="w-[95vw] mx-auto p-10 rounded-2xl bg-gradient-to-br from-[#5792ff] via-[#5792ff] to-[#4d94ff] shadow-2xl border border-gray-200 my-12">
+      <h3 className="text-4xl font-extrabold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-300">
         {formatName} Stats Dashboard
       </h3>
 
@@ -94,13 +94,13 @@ export const FormatStatsComponent: React.FC<Props> = ({ formatName, stats }) => 
         <StatCard label="Matches" value={batting.matches} />
         <StatCard label="Innings" value={batting.innings} />
         <StatCard label="Runs" value={batting.runs} />
+        <StatCard label="Batting Avg" value={batting.average} />
         <StatCard label="Wickets" value={bowling.wickets} />
-        <StatCard label="Catches" value={fielding.catches} />
       </div>
 
       {/* Batting Overview */}
       <div className="mb-20">
-        <h4 className="text-3xl font-bold mb-6 text-indigo-700 border-b-2 border-indigo-300 pb-2">
+        <h4 className="text-3xl font-bold mb-6 text-slate-100 border-b-2 border-indigo-300 pb-2">
           Batting Overview
         </h4>
 
@@ -131,7 +131,7 @@ export const FormatStatsComponent: React.FC<Props> = ({ formatName, stats }) => 
 
       {/* Bowling Overview */}
       <div className="mb-20">
-        <h4 className="text-3xl font-bold mb-6 text-purple-700 border-b-2 border-purple-300 pb-2">
+        <h4 className="text-3xl font-bold mb-6 text-slate-200 border-b-2 border-purple-300 pb-2">
           Bowling Overview
         </h4>
 

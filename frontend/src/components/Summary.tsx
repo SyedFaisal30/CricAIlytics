@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Achievements: React.FC<Props> = ({ achievements }) => (
-  <section className="w-full mx-auto p-8 rounded-2xl shadow-lg border border-gray-200 mt-10 bg-gradient-to-br from-sky-900 via-blue-800 to-slate-900 text-white">
+  <section className="w-full mx-auto p-8 rounded-2xl shadow-lg border border-gray-200 mt-10 bg-gradient-to-br from-[#5792ff] via-[#5792ff] to-[#4d94ff] text-white">
     <h3 className="text-3xl font-bold mb-6 border-b border-blue-300 pb-2">
       Achievements
     </h3>
@@ -24,8 +24,8 @@ interface SummaryProps {
 }
 
 export const Summary: React.FC<SummaryProps> = ({ summary }) => (
-  <section className="w-full mx-auto p-8 rounded-2xl shadow-lg border border-gray-200 mt-10 bg-gradient-to-br from-sky-900 via-blue-800 to-slate-900 text-white">
-    <h3 className="text-3xl font-bold mb-6 border-b border-blue-300 pb-2">
+  <section className="w-[95vw] mx-auto p-8 rounded-2xl shadow-lg border border-gray-200 mt-10 bg-gradient-to-br from-[#5792ff] via-[#5792ff] to-[#4d94ff] text-white">
+    <h3 className="text-3xl font-bold mb-6 border-b border-slate-100 pb-2">
       Summary
     </h3>
     <p className="leading-relaxed text-base">
