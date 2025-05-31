@@ -9,18 +9,18 @@ import type { PlayerFormats } from "../utils/types";
 export const PlayerProfilePage: React.FC = () => {
   const [inputName, setInputName] = useState("");
   const [playerName, setPlayerName] = useState("");
-  const [selectedFormat, setSelectedFormat] = useState<keyof PlayerFormats>("ODI");
+  const [selectedFormat, setSelectedFormat] =
+    useState<keyof PlayerFormats>("ODI");
 
   const { data, loading, error } = usePlayer(playerName);
 
   const handleSubmit = () => {
     if (inputName.trim()) {
       setPlayerName(inputName.trim());
-      setSelectedFormat("Test"); // Reset to default format when searching new player
+      setSelectedFormat("Test");
     }
   };
 
-  // Get format keys in consistent order if data available
   const formatKeys: (keyof PlayerFormats)[] = data
     ? (Object.keys(data.formats) as (keyof PlayerFormats)[])
     : [];
@@ -60,18 +60,22 @@ export const PlayerProfilePage: React.FC = () => {
         </p>
       )}
       {error && (
-        <p className="text-center text-red-400 font-semibold">
-          Error: {error}
-        </p>
+        <p className="text-center text-red-400 font-semibold">Error: {error}</p>
       )}
       {!loading && !error && !data && playerName && (
-        <p className="text-center text-gray-300 font-medium">No player data found.</p>
+        <p className="text-center text-gray-300 font-medium">
+          No player data found.
+        </p>
       )}
 
       {/* Player Data Display */}
       {data && (
         <div className="space-y-10">
-          <PlayerInfoComponent profile={data.player_profile} info={data.player_info} />
+          <PlayerInfoComponent
+            profile={data.player_profile}
+            info={data.player_info}
+            searchedName={playerName}
+          />
           <Achievements achievements={data.achievements} />
           <Summary summary={data.summary} />
 
@@ -103,7 +107,9 @@ export const PlayerProfilePage: React.FC = () => {
             stats={data.formats[selectedFormat]}
           />
 
-          <footer className="mt-12 text-center text-gray-300 italic text-sm">{data.note}</footer>
+          <footer className="mt-12 text-center text-gray-300 italic text-sm">
+            {data.note}
+          </footer>
         </div>
       )}
     </div>
