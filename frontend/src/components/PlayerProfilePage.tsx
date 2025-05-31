@@ -26,8 +26,8 @@ export const PlayerProfilePage: React.FC = () => {
     : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#5792ff] via-[#5792ff] to-[#4d94ff] text-white font-sans pt-6">
-      <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide drop-shadow-lg">
+<div className="min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-indigo-500 text-white font-sans pt-6 px-4">
+      <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide drop-shadow-md">
         Player Info Lookup
       </h1>
 
@@ -37,16 +37,16 @@ export const PlayerProfilePage: React.FC = () => {
           value={inputName}
           onChange={(e) => setInputName(e.target.value)}
           placeholder="Enter player name"
-          className="w-full max-w-md rounded-md px-4 py-3 text-slate-100 font-medium focus:outline-none focus:ring-4 focus:ring-slate-100"
+          className="w-full max-w-md rounded-md px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
         />
         <button
           onClick={handleSubmit}
           disabled={!inputName.trim()}
-          className={`ml-4 px-6 py-3 rounded-md font-semibold text-indigo-900 transition 
+          className={`ml-4 px-6 py-3 rounded-md font-semibold transition 
             ${
               inputName.trim()
-                ? "bg-yellow-400 hover:bg-yellow-300 shadow-lg"
-                : "bg-gray-400 cursor-not-allowed"
+                ? "bg-indigo-300 hover:bg-indigo-400 text-gray-900 shadow-md"
+                : "bg-gray-400 text-gray-700 cursor-not-allowed"
             }`}
         >
           Search
@@ -55,15 +55,15 @@ export const PlayerProfilePage: React.FC = () => {
 
       {/* Status Messages */}
       {loading && (
-        <p className="text-center text-yellow-200 font-semibold animate-pulse">
+        <p className="text-center text-indigo-200 font-semibold animate-pulse">
           Loading player data...
         </p>
       )}
       {error && (
-        <p className="text-center text-red-400 font-semibold">Error: {error}</p>
+        <p className="text-center text-red-300 font-semibold">Error: {error}</p>
       )}
       {!loading && !error && !data && playerName && (
-        <p className="text-center text-gray-300 font-medium">
+        <p className="text-center text-indigo-200 font-medium">
           No player data found.
         </p>
       )}
@@ -79,7 +79,7 @@ export const PlayerProfilePage: React.FC = () => {
           <Achievements achievements={data.achievements} />
           <Summary summary={data.summary} />
 
-          <h2 className="text-3xl font-bold border-b border-yellow-400 pb-2 text-yellow-300">
+          <h2 className="text-3xl font-bold border-b border-indigo-300 pb-2">
             Stats by Format
           </h2>
 
@@ -92,8 +92,8 @@ export const PlayerProfilePage: React.FC = () => {
                 className={`px-5 py-2 rounded-full font-semibold transition-colors
                   ${
                     selectedFormat === format
-                      ? "bg-yellow-400 text-indigo-900 shadow-lg"
-                      : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+                      ? "bg-indigo-300 text-gray-900 shadow"
+                      : "bg-indigo-800 text-indigo-300 hover:bg-indigo-700"
                   }`}
               >
                 {format}
@@ -107,7 +107,7 @@ export const PlayerProfilePage: React.FC = () => {
             stats={data.formats[selectedFormat]}
           />
 
-          <footer className="mt-12 text-center text-gray-300 italic text-sm">
+          <footer className="mt-12 text-center italic text-indigo-300 text-sm">
             {data.note}
           </footer>
         </div>
