@@ -16,7 +16,7 @@ export const PlayerProfilePage: React.FC = () => {
   const handleSubmit = () => {
     if (inputName.trim()) {
       setPlayerName(inputName.trim());
-      setSelectedFormat("ODI"); // Reset to default format when searching new player
+      setSelectedFormat("Test"); // Reset to default format when searching new player
     }
   };
 

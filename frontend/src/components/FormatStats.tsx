@@ -52,7 +52,6 @@ const IndividualOpponentChart: React.FC<{
 }> = ({ data, dataKey, title }) => {
   if (!data || data.length === 0) return null;
 
-  // Transform data for 'high_score' or 'best_numeric' bars
   const processedData =
     dataKey === "high_score"
       ? data.map((o) => ({
@@ -67,16 +66,32 @@ const IndividualOpponentChart: React.FC<{
       : data;
 
   return (
-    <div className="bg-slate-800 p-4 rounded-lg shadow-md">
+    <div className=" bg-slate-800 p-4 rounded-lg shadow-md">
       <h5 className="text-lg font-semibold text-center text-slate-200 mb-3">
         {title}
       </h5>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={processedData}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="opponent" tick={{ fill: "#cbd5e1" }} />
+          {/* Remove XAxis label/ticks */}
+          <XAxis dataKey="opponent" tick={false} axisLine={false} />
           <YAxis tick={{ fill: "#cbd5e1" }} />
-          <Tooltip />
+          <Tooltip
+            content={({ active, payload, label }) => {
+              if (active && payload && payload.length) {
+                return (
+                  <div className="bg-slate-700 p-2 rounded-md shadow text-white">
+                    <p className="font-semibold">Opponent: {label}</p>
+                    <p>
+                      {title}:{" "}
+                      <span className="font-bold">{payload[0].value}</span>
+                    </p>
+                  </div>
+                );
+              }
+              return null;
+            }}
+          />
           <Legend />
           <Bar
             dataKey={dataKey}
@@ -89,12 +104,13 @@ const IndividualOpponentChart: React.FC<{
   );
 };
 
+
 export const FormatStatsComponent: React.FC<Props> = ({
   formatName,
   stats,
 }) => {
   return (
-    <div className="w-full px-6 py-10 bg-slate-900 rounded-lg shadow-lg">
+    <div className="w-[95vw] mx-auto p-8 border border-gray-200 mt-10 bg-slate-900 rounded-2xl shadow-lg">
       <h3 className="text-4xl font-bold text-center mb-10 text-white">
         {formatName} Stats
       </h3>
@@ -190,6 +206,11 @@ export const FormatStatsComponent: React.FC<Props> = ({
           Bowling vs Opponents
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <IndividualOpponentChart
+              title="Matches"
+              data={stats.bowling_vs_opponents}
+              dataKey="matches"
+            />
           <IndividualOpponentChart
             title="Wickets"
             data={stats.bowling_vs_opponents}
@@ -211,14 +232,9 @@ export const FormatStatsComponent: React.FC<Props> = ({
             dataKey="best_numeric"
           />
           <IndividualOpponentChart
-            title="4-Wicket Hauls"
+            title="Best Bowling"
             data={stats.bowling_vs_opponents}
-            dataKey="four_wicket_hauls"
-          />
-          <IndividualOpponentChart
-            title="5-Wicket Hauls"
-            data={stats.bowling_vs_opponents}
-            dataKey="five_wicket_hauls"
+            dataKey="best_numeric"
           />
         </div>
       </div>
