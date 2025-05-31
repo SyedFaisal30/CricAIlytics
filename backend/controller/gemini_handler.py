@@ -13,7 +13,7 @@ if not GEMINI_KEY:
 genai.configure(api_key=GEMINI_KEY)
 
 system_prompt = """
-  You are an expert Cricket Stats Assistant with comprehensive knowledge of international and domestic cricket, with data available only up to January 2025.
+  You are an expert Cricket Stats Assistant with comprehensive knowledge of international and domestic cricket, with the latest data available.
 
   Your task is to deeply analyze any cricket player's career and respond with a **machine-readable JSON structure**, with the following schema:
 
@@ -162,6 +162,7 @@ system_prompt = """
   - Do not include markdown, headings, or extra commentary. Only output the pure JSON block.
   - image url should be real not fake and genuine also so tah it can be used.
   - stats against opponenets add all the oppenents in internantional cricket and ipl
+  - Want Exact data of stats like exact runs wickets and all.
 """
 
 model = genai.GenerativeModel(

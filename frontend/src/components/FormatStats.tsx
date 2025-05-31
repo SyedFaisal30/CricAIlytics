@@ -16,55 +16,72 @@ interface Props {
   stats: FormatStats;
 }
 
-const COLORS = ["#4f46e5", "#3b82f6", "#06b6d4", "#22c55e", "#facc15", "#ef4444"];
+// Color palette for bars
+const COLORS = [
+  "#4f46e5",
+  "#3b82f6",
+  "#06b6d4",
+  "#22c55e",
+  "#facc15",
+  "#ef4444",
+];
 
-// Custom tick component for vertical opponent names
-const VerticalTick = (props: any) => {
-  const { x, y, payload } = props;
-  return (
-    <text
-      x={x}
-      y={y + 10}
-      textAnchor="start"
-      fill="#fff"
-      transform={`rotate(-90, ${x}, ${y + 10})`}
-      style={{ fontSize: 12 }}
-    >
-      {payload.value}
-    </text>
-  );
+// Helper to parse string scores (e.g. '105*') safely to number
+const parseHighScore = (score: string) => {
+  const numeric = parseInt(score.replace("*", ""), 10);
+  return isNaN(numeric) ? 0 : numeric;
 };
+// Tile component for a single stat
+const StatTile: React.FC<{ label: string; value: string | number }> = ({
+  label,
+  value,
+}) => (
+  <div className="bg-slate-700 rounded-md p-4 shadow-md flex flex-col items-center justify-center">
+    <span className="text-indigo-400 font-semibold text-sm">{label}</span>
+    <span className="text-white text-xl font-bold">{value}</span>
+  </div>
+);
 
 const IndividualOpponentChart: React.FC<{
   data: OpponentStats[] | undefined;
-  dataKey: string;
+  dataKey:
+    | keyof Omit<OpponentStats, "opponent" | "best" | "high_score">
+    | "high_score"
+    | "best_numeric";
   title: string;
 }> = ({ data, dataKey, title }) => {
   if (!data || data.length === 0) return null;
 
+  // Transform data for 'high_score' or 'best_numeric' bars
+  const processedData =
+    dataKey === "high_score"
+      ? data.map((o) => ({
+          ...o,
+          high_score: parseHighScore(o.high_score),
+        }))
+      : dataKey === "best_numeric"
+      ? data.map((o) => ({
+          ...o,
+          best_numeric: parseInt(o.best.split("/")[0]) || 0,
+        }))
+      : data;
+
   return (
-    <div className="w-[full] mb-8 p-4 rounded-2xl shadow-lg bg-gradient-to-r from-[#c2d2f9] via-[#6f9eff] to-[#66a6ff] text-white">
-      <h5 className="text-xl font-semibold mb-3">{title}</h5>
-      <ResponsiveContainer width="100%" height={250}>
-        <BarChart
-          data={data}
-          margin={{ top: 15, right: 20, left: 15, bottom: 5 }}
-          barGap={8} // Add gap between bars
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" />
-          {/* Remove tick labels on XAxis to hide country names */}
-          <XAxis dataKey="opponent" stroke="#fff" tick={false} height={30} />
-          <YAxis stroke="#fff" />
-          <Tooltip
-            contentStyle={{ backgroundColor: "#1e293b", borderRadius: "8px" }}
-            labelStyle={{ color: "#facc15" }}
-          />
-          <Legend wrapperStyle={{ color: "#facc15" }} />
+    <div className="bg-slate-800 p-4 rounded-lg shadow-md">
+      <h5 className="text-lg font-semibold text-center text-slate-200 mb-3">
+        {title}
+      </h5>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={processedData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="opponent" tick={{ fill: "#cbd5e1" }} />
+          <YAxis tick={{ fill: "#cbd5e1" }} />
+          <Tooltip />
+          <Legend />
           <Bar
             dataKey={dataKey}
             fill={COLORS[Math.floor(Math.random() * COLORS.length)]}
-            barSize={25}
-            radius={[4, 4, 0, 0]}
+            isAnimationActive={false}
           />
         </BarChart>
       </ResponsiveContainer>
@@ -72,89 +89,139 @@ const IndividualOpponentChart: React.FC<{
   );
 };
 
-
-const StatCard = ({ label, value }: { label: string; value: number }) => (
-  <div className="flex flex-col items-center justify-center bg-gradient-to-br from-[#c2d2f9] via-[#6f9eff] to-[#66a6ff] text-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-shadow duration-300">
-    <span className="text-sm font-medium text-slate-100">{label}</span>
-    <span className="text-3xl font-bold text-slate-200 mt-1">{value}</span>
-  </div>
-);
-
-export const FormatStatsComponent: React.FC<Props> = ({ formatName, stats }) => {
-  const { batting, bowling, fielding } = stats;
-
+export const FormatStatsComponent: React.FC<Props> = ({
+  formatName,
+  stats,
+}) => {
   return (
-    <section className="w-[95vw] mx-auto p-10 rounded-2xl bg-gradient-to-br from-[#5792ff] via-[#5792ff] to-[#4d94ff] shadow-2xl border border-gray-200 my-12">
-      <h3 className="text-4xl font-extrabold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-300">
-        {formatName} Stats Dashboard
+    <div className="w-full px-6 py-10 bg-slate-900 rounded-lg shadow-lg">
+      <h3 className="text-4xl font-bold text-center mb-10 text-white">
+        {formatName} Stats
       </h3>
 
-      {/* Overall Summary */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-14">
-        <StatCard label="Matches" value={batting.matches} />
-        <StatCard label="Innings" value={batting.innings} />
-        <StatCard label="Runs" value={batting.runs} />
-        <StatCard label="Batting Avg" value={batting.average} />
-        <StatCard label="Wickets" value={bowling.wickets} />
+      {/* Batting Overall Summary */}
+      <div className="mb-12 text-slate-300">
+        <h4 className="text-3xl font-bold mb-6 border-b border-indigo-400 pb-2">
+          Batting Summary
+        </h4>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-8 gap-6">
+          <StatTile label="Matches" value={stats.batting.matches} />
+          <StatTile label="Innings" value={stats.batting.innings} />
+          <StatTile label="Runs" value={stats.batting.runs} />
+          <StatTile label="Average" value={stats.batting.average.toFixed(2)} />
+          <StatTile
+            label="Strike Rate"
+            value={stats.batting.strike_rate.toFixed(2)}
+          />
+          <StatTile label="50s" value={stats.batting.fifties} />
+          <StatTile label="100s" value={stats.batting.hundreds} />
+          <StatTile label="High Score" value={stats.batting.high_score} />
+        </div>
       </div>
 
-      {/* Batting Overview */}
-      <div className="mb-20">
+      {/* Batting vs Opponents Charts */}
+      <div className="mb-16">
         <h4 className="text-3xl font-bold mb-6 text-slate-100 border-b-2 border-indigo-300 pb-2">
-          Batting Overview
+          Batting vs Opponents
         </h4>
-
-        {/* Batting opponent charts in 2-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <IndividualOpponentChart
-            title="Runs vs Opponents"
+            title="Matches"
+            data={stats.batting_vs_opponents}
+            dataKey="matches"
+          />
+          <IndividualOpponentChart
+            title="Runs"
             data={stats.batting_vs_opponents}
             dataKey="runs"
           />
           <IndividualOpponentChart
-            title="Average vs Opponents"
+            title="Average"
             data={stats.batting_vs_opponents}
             dataKey="average"
           />
           <IndividualOpponentChart
-            title="50s vs Opponents"
+            title="50s"
             data={stats.batting_vs_opponents}
             dataKey="fifties"
           />
           <IndividualOpponentChart
-            title="100s vs Opponents"
+            title="100s"
             data={stats.batting_vs_opponents}
             dataKey="hundreds"
+          />
+          <IndividualOpponentChart
+            title="High Score"
+            data={stats.batting_vs_opponents}
+            dataKey="high_score"
           />
         </div>
       </div>
 
-      {/* Bowling Overview */}
-      <div className="mb-20">
-        <h4 className="text-3xl font-bold mb-6 text-slate-200 border-b-2 border-purple-300 pb-2">
-          Bowling Overview
+      {/* Bowling Overall Summary */}
+      <div className="mb-12 text-slate-300">
+        <h4 className="text-3xl font-bold mb-6 border-b border-purple-400 pb-2">
+          Bowling Summary
         </h4>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-8 gap-6">
+          <StatTile label="Matches" value={stats.bowling.matches} />
+          <StatTile
+            label="Innings Bowled"
+            value={stats.bowling.innings_bowled}
+          />
+          <StatTile label="Wickets" value={stats.bowling.wickets} />
+          <StatTile label="Average" value={stats.bowling.average.toFixed(2)} />
+          <StatTile label="Economy" value={stats.bowling.economy.toFixed(2)} />
+          <StatTile label="Best Bowling" value={stats.bowling.best} />
+          <StatTile
+            label="4-Wicket Hauls"
+            value={stats.bowling.four_wicket_hauls}
+          />
+          <StatTile
+            label="5-Wicket Hauls"
+            value={stats.bowling.five_wicket_hauls}
+          />
+        </div>
+      </div>
 
-        {/* Bowling opponent charts in 2-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {/* Bowling vs Opponents Charts */}
+      <div className="mb-16">
+        <h4 className="text-3xl font-bold mb-6 text-slate-200 border-b-2 border-purple-300 pb-2">
+          Bowling vs Opponents
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <IndividualOpponentChart
-            title="Wickets vs Opponents"
+            title="Wickets"
             data={stats.bowling_vs_opponents}
             dataKey="wickets"
           />
           <IndividualOpponentChart
-            title="Economy vs Opponents"
+            title="Average"
+            data={stats.bowling_vs_opponents}
+            dataKey="average"
+          />
+          <IndividualOpponentChart
+            title="Economy"
             data={stats.bowling_vs_opponents}
             dataKey="economy"
           />
+          <IndividualOpponentChart
+            title="Best Bowling (Wickets count)"
+            data={stats.bowling_vs_opponents}
+            dataKey="best_numeric"
+          />
+          <IndividualOpponentChart
+            title="4-Wicket Hauls"
+            data={stats.bowling_vs_opponents}
+            dataKey="four_wicket_hauls"
+          />
+          <IndividualOpponentChart
+            title="5-Wicket Hauls"
+            data={stats.bowling_vs_opponents}
+            dataKey="five_wicket_hauls"
+          />
         </div>
       </div>
-
-      {/* Fielding Summary as Cards */}
-      <div className="mb-10 max-w-md mx-auto grid grid-cols-2 gap-6">
-        <StatCard label="Catches" value={fielding.catches} />
-        <StatCard label="Stumpings" value={fielding.stumpings} />
-      </div>
-    </section>
+    </div>
   );
 };

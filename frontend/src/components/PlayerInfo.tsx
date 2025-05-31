@@ -35,7 +35,7 @@ export const PlayerInfoComponent: React.FC<Props> = ({ profile, info }) => {
       </div>
 
       {/* Key Details Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
         {[
           { label: "Age (Jan 2025)", value: profile.age_as_of_jan_2025 },
           { label: "Role", value: info.role },
