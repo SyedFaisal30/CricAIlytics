@@ -21,9 +21,9 @@ export const PlayerProfilePage: React.FC = () => {
     }
   };
 
-  const formatKeys: (keyof PlayerFormats)[] = data
-    ? (Object.keys(data.formats) as (keyof PlayerFormats)[])
-    : [];
+  const formatKeys: (keyof PlayerFormats)[] = data?.formats
+  ? (Object.keys(data.formats) as (keyof PlayerFormats)[])
+  : [];
 
   return (
 <div className="min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-indigo-500 text-white font-sans pt-6 px-4">
