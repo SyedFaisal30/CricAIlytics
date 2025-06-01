@@ -7,6 +7,7 @@ import { FormatStatsComponent } from "./FormatStats";
 import { LandingSection } from "./LandingSection";
 import { StatsLoader } from "./Loader";
 import type { PlayerFormats } from "../utils/types";
+import { Info } from "lucide-react";
 
 export const PlayerProfilePage: React.FC = () => {
   const [inputName, setInputName] = useState("");
@@ -29,55 +30,65 @@ export const PlayerProfilePage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-indigo-500 text-white font-sans pt-6 px-4">
-  <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide drop-shadow-md">
-    Player Info Lookup
-  </h1>
+      <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide drop-shadow-md">
+        Player Info Lookup
+      </h1>
 
-  <div className="flex justify-center mb-8">
-    <form
-  onSubmit={(e) => {
-    e.preventDefault(); 
-    if (inputName.trim()) handleSubmit(); 
-  }}
-  className="flex mb-8"
->
-  <input
-    type="text"
-    value={inputName}
-    onChange={(e) => setInputName(e.target.value)}
-    placeholder="Enter player name"
-    className="w-full max-w-md rounded-md px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
-  />
-  <button
-    type="submit"
-    disabled={!inputName.trim()}
-    className={`ml-4 px-6 py-3 rounded-md font-semibold transition 
-      ${
-        inputName.trim()
-          ? "bg-indigo-300 hover:bg-indigo-400 text-gray-900 shadow-md"
-          : "bg-gray-400 text-gray-700 cursor-not-allowed"
-      }`}
-  >
-    Search
-  </button>
-</form>
+      <div className="flex justify-center mb-8">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (inputName.trim()) handleSubmit();
+          }}
+          className="flex items-center flex-wrap gap-3 mb-8"
+        >
+          <input
+            type="text"
+            value={inputName}
+            onChange={(e) => setInputName(e.target.value)}
+            placeholder="Enter player name"
+            className="max-w-md rounded-md bg-blue-100 px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+          />
 
-  </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="submit"
+              disabled={!inputName.trim()}
+              className={`px-6 py-3 rounded-md font-semibold transition 
+          ${
+            inputName.trim()
+              ? "bg-indigo-300 hover:bg-indigo-400 text-gray-900 shadow-md"
+              : "bg-gray-400 text-gray-700 cursor-not-allowed"
+          }`}
+            >
+              Search
+            </button>
 
-  {!playerName && <LandingSection />}
+            {/* Info icon with tooltip */}
+            <div className="relative group">
+              <Info className="w-5 h-5 text-blue-100 cursor-pointer" />
+              <div className="absolute left-6 top-1 z-10 hidden group-hover:block w-64 bg-white text-sm text-gray-700 border border-gray-300 rounded-md p-3 shadow-lg">
+                <strong>Note:</strong> Make sure the player name is accurate,
+                otherwise you may not get the correct image or data.
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
 
-  {/* Render loader overlay outside and above all content */}
-  {loading && <StatsLoader />}
+      {!playerName && <LandingSection />}
 
-  {error && (
-    <p className="text-center text-red-300 font-semibold">Error: {error}</p>
-  )}
-  {!loading && !error && !data && playerName && (
-    <p className="text-center text-indigo-200 font-medium">
-      No player data found.
-    </p>
-  )}
+      {/* Render loader overlay outside and above all content */}
+      {loading && <StatsLoader />}
 
+      {error && (
+        <p className="text-center text-red-300 font-semibold">Error: {error}</p>
+      )}
+      {!loading && !error && !data && playerName && (
+        <p className="text-center text-indigo-200 font-medium">
+          No player data found.
+        </p>
+      )}
 
       {/* Player Data Display */}
       {data && (
