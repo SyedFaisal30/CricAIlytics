@@ -4,6 +4,8 @@ import { PlayerInfoComponent } from "./PlayerInfo";
 import { Achievements } from "./Achievements";
 import { Summary } from "./Summary";
 import { FormatStatsComponent } from "./FormatStats";
+import { LandingSection } from "./LandingSection";
+import { StatsLoader } from "./Loader";
 import type { PlayerFormats } from "../utils/types";
 
 export const PlayerProfilePage: React.FC = () => {
@@ -22,51 +24,60 @@ export const PlayerProfilePage: React.FC = () => {
   };
 
   const formatKeys: (keyof PlayerFormats)[] = data?.formats
-  ? (Object.keys(data.formats) as (keyof PlayerFormats)[])
-  : [];
+    ? (Object.keys(data.formats) as (keyof PlayerFormats)[])
+    : [];
 
   return (
-<div className="min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-indigo-500 text-white font-sans pt-6 px-4">
-      <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide drop-shadow-md">
-        Player Info Lookup
-      </h1>
+    <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-blue-300 to-indigo-500 text-white font-sans pt-6 px-4">
+  <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide drop-shadow-md">
+    Player Info Lookup
+  </h1>
 
-      <div className="flex justify-center mb-8">
-        <input
-          type="text"
-          value={inputName}
-          onChange={(e) => setInputName(e.target.value)}
-          placeholder="Enter player name"
-          className="w-full max-w-md rounded-md px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
-        />
-        <button
-          onClick={handleSubmit}
-          disabled={!inputName.trim()}
-          className={`ml-4 px-6 py-3 rounded-md font-semibold transition 
-            ${
-              inputName.trim()
-                ? "bg-indigo-300 hover:bg-indigo-400 text-gray-900 shadow-md"
-                : "bg-gray-400 text-gray-700 cursor-not-allowed"
-            }`}
-        >
-          Search
-        </button>
-      </div>
+  <div className="flex justify-center mb-8">
+    <form
+  onSubmit={(e) => {
+    e.preventDefault(); 
+    if (inputName.trim()) handleSubmit(); 
+  }}
+  className="flex mb-8"
+>
+  <input
+    type="text"
+    value={inputName}
+    onChange={(e) => setInputName(e.target.value)}
+    placeholder="Enter player name"
+    className="w-full max-w-md rounded-md px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+  />
+  <button
+    type="submit"
+    disabled={!inputName.trim()}
+    className={`ml-4 px-6 py-3 rounded-md font-semibold transition 
+      ${
+        inputName.trim()
+          ? "bg-indigo-300 hover:bg-indigo-400 text-gray-900 shadow-md"
+          : "bg-gray-400 text-gray-700 cursor-not-allowed"
+      }`}
+  >
+    Search
+  </button>
+</form>
 
-      {/* Status Messages */}
-      {loading && (
-        <p className="text-center text-indigo-200 font-semibold animate-pulse">
-          Loading player data...
-        </p>
-      )}
-      {error && (
-        <p className="text-center text-red-300 font-semibold">Error: {error}</p>
-      )}
-      {!loading && !error && !data && playerName && (
-        <p className="text-center text-indigo-200 font-medium">
-          No player data found.
-        </p>
-      )}
+  </div>
+
+  {!playerName && <LandingSection />}
+
+  {/* Render loader overlay outside and above all content */}
+  {loading && <StatsLoader />}
+
+  {error && (
+    <p className="text-center text-red-300 font-semibold">Error: {error}</p>
+  )}
+  {!loading && !error && !data && playerName && (
+    <p className="text-center text-indigo-200 font-medium">
+      No player data found.
+    </p>
+  )}
+
 
       {/* Player Data Display */}
       {data && (
@@ -106,7 +117,6 @@ export const PlayerProfilePage: React.FC = () => {
             formatName={selectedFormat}
             stats={data.formats[selectedFormat]}
           />
-
           <footer className="mt-12 text-center italic text-indigo-300 text-sm">
             {data.note}
           </footer>
