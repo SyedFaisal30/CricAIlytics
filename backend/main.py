@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from controller.gemini_handler import get_player_stats
+from routes.routes import router 
 
 app = FastAPI(
     title="🏏 CricAI - Cricket Stats Assistant",
@@ -21,10 +22,9 @@ app.add_middleware(
     allow_headers=["*"],           
 )
 
-class PlayerRequest(BaseModel):
-    player_name: str
+@app.get("/")
+def read_root():
+    return {"message": "🏏 CricAI API is running!", "status": "ok"}
 
-@app.post("/analyze-player/")
-def analyze_player(req: PlayerRequest):
-    stats = get_player_stats(req.player_name)
-    return {"result": stats}
+# Include your router from routes.py
+app.include_router(router)  # ← This was missing!
