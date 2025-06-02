@@ -1,4 +1,13 @@
-# 🏏 CricAIlytics – AI-powered Cricket Stats Assistant
+<h1 align="center">
+  <img src="frontend/src/assets/logo.png" alt="CricAIlytics Logo" width="50" style="border-radius: 50%; vertical-align: middle; margin-right: 12px;" />
+  <span>CricAIlytics – AI-powered Cricket Stats Assistant</span>
+</h1>
+
+
+
+<p align="center">
+  Your personal AI cricket companion to search structured stats, career summaries, and player insights.
+</p>
 
 **CricAIlytics** is an intelligent cricket assistant that uses Google Gemini Pro to generate in-depth career summaries, insights, and statistics about any cricketer — past or present. Just enter a player’s name and let the AI do the rest.
 
