@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="frontend/src/assets/logo.png" alt="CricAIlytics Logo" width="50" style="border-radius: 50%; vertical-align: middle; margin-right: 12px;" />
+  <img src="frontend/src/assets/clogo.png" alt="CricAIlytics Logo" width="50" style="border-radius: 50%; vertical-align: middle; margin-right: 12px;" />
   <span>CricAIlytics – AI-powered Cricket Stats Assistant</span>
 </h1>
 
