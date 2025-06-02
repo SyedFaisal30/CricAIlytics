@@ -16,6 +16,8 @@ export const PlayerProfilePage: React.FC = () => {
     useState<keyof PlayerFormats>("ODI");
 
   const { data, loading, error } = usePlayer(playerName);
+  const [showTooltip, setShowTooltip] = useState(false);
+
 
   const handleSubmit = () => {
     if (inputName.trim()) {
@@ -47,7 +49,7 @@ export const PlayerProfilePage: React.FC = () => {
             value={inputName}
             onChange={(e) => setInputName(e.target.value)}
             placeholder="Enter player name"
-            className="max-w-md rounded-md bg-blue-100 px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+            className="max-w-md w-[50vw] rounded-md bg-blue-100 px-4 py-3 text-gray-900 font-medium border border-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
           />
 
           <div className="flex items-center gap-2">
@@ -65,12 +67,22 @@ export const PlayerProfilePage: React.FC = () => {
             </button>
 
             {/* Info icon with tooltip */}
-            <div className="relative group">
-              <Info className="w-5 h-5 text-blue-100 cursor-pointer" />
-              <div className="absolute left-6 top-1 z-10 hidden group-hover:block w-64 bg-white text-sm text-gray-700 border border-gray-300 rounded-md p-3 shadow-lg">
-                <strong>Note:</strong> Make sure the player name is accurate,
-                otherwise you may not get the correct image or data.
-              </div>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setShowTooltip((prev) => !prev)}
+                className="p-1 rounded-full bg-blue-300 hover:bg-blue-400 transition"
+                aria-label="Info"
+              >
+                <Info className="w-5 h-5 text-white" />
+              </button>
+
+              {showTooltip && (
+                <div className="absolute right-0 top-10 z-20 w-64 bg-white text-sm text-gray-700 border border-gray-300 rounded-md p-3 shadow-lg">
+                  <strong>Note:</strong> Make sure the player name is accurate,
+                  otherwise you may not get the correct image or data.
+                </div>
+              )}
             </div>
           </div>
         </form>

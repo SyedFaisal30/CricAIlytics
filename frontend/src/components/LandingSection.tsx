@@ -28,34 +28,35 @@ const features: Feature[] = [
 
 export const LandingSection: React.FC = () => {
   return (
-    <section className="h-[90vh] rounded-2xl bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200 text-gray-900 px-4 py-16 md:h-[70vh] md:px-16 flex flex-col justify-center">
-<div className="flex justify-center items-center gap-3 flex-wrap text-center mb-8">
-  <h1 className="text-2xl md:text-5xl font-extrabold tracking-tight drop-shadow-sm">
-    Welcome to
-  </h1>
-  <img
-    src={logo}
-    alt="CricAIlytics Logo"
-    className="h-10 w-10 md:h-14 md:w-14 rounded-full object-cover border-2 border-blue-400 shadow"
-  />
-  <h1 className="text-2xl md:text-5xl font-extrabold tracking-tight drop-shadow-sm text-blue-600">
-    CricAIlytics
-  </h1>
-</div>
+    <section className="box-border rounded-2xl w-full md:h-[60vh] bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200 text-gray-900 px-6 py-10 flex flex-col justify-center items-center">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-center mb-12">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight drop-shadow-sm">
+          Welcome to
+        </h1>
+        <img
+          src={logo}
+          alt="CricAIlytics Logo"
+          className="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover border-2 border-blue-400 shadow"
+        />
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight drop-shadow-sm text-blue-600">
+          CricAIlytics
+        </h1>
+      </div>
 
-
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 text-left">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-3xl p-6 border border-gray-200 shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105"
-            >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
+      {/* Features */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl box-border">
+        {features.map((feature, idx) => (
+          <div
+            key={idx}
+            className="bg-white box-border rounded-3xl p-6 border border-gray-200 shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105"
+          >
+            <div className="mb-4">{feature.icon}</div>
+            <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+            <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
