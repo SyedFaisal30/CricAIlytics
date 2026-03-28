@@ -21,7 +21,7 @@ const STEPS = [
   { label: "Crunching into stats",      Icon: Zap,           color: "#4F6CBA" },
 ];
 
-const STEP_DURATION = 10000;
+const STEP_DURATION = 8000;
 
 export const StatsLoader: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
