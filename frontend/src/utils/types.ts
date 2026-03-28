@@ -50,6 +50,8 @@ export interface FormatStats {
   fielding: FieldingStats;
   batting_vs_opponents: OpponentStats[];
   bowling_vs_opponents: OpponentStats[];
+  batting_by_year: OpponentStats[];
+  bowling_by_year: OpponentStats[];
 }
 
 export interface PlayerFormats {
@@ -66,6 +68,7 @@ export interface PlayerOrigin {
 }
 
 export interface PlayerProfile {
+  jersey_number: number;
   name: string;
   also_known_as: string;
   age_as_of_jan_2025: number;
@@ -87,4 +90,5 @@ export interface PlayerData {
   achievements: string[];
   image_url: string;
   note: string;
+  comparisons: string[];
 }

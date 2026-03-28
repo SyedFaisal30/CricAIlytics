@@ -1,26 +1,113 @@
 import React from "react";
-import { CheckCircle2 } from "lucide-react"; // Lucide icon (or you can use Heroicons or FontAwesome)
 
 interface Props {
   achievements: string[];
 }
 
 export const Achievements: React.FC<Props> = ({ achievements }) => (
-  <section className="w-[95vw] mx-auto p-8 rounded-2xl shadow-2xl border border-blue-300 mt-10 bg-gradient-to-br from-blue-200 via-blue-300 to-indigo-500 text-gray-800">
-    <h3 className="text-3xl font-extrabold mb-6 pb-2 border-b-2 border-blue-300 text-blue-800 drop-shadow-sm">
-      🏆 Achievements
-    </h3>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div
+    style={{
+      background: "#fff",
+      borderRadius: 20,
+      border: "1px solid #E2E8F0",
+      padding: "28px 32px",
+      boxShadow: "0 1px 3px rgba(0,0,0,.04)",
+    }}
+  >
+    {/* Section header */}
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        marginBottom: 22,
+      }}
+    >
+      <div
+        style={{
+          width: 3,
+          height: 18,
+          background: "#F59E0B",
+          borderRadius: 2,
+        }}
+      />
+      <h3
+        style={{
+          margin: 0,
+          fontSize: 15,
+          fontWeight: 600,
+          color: "#0F172A",
+          fontFamily: "'DM Sans', sans-serif",
+          letterSpacing: -0.3,
+        }}
+      >
+        Career Achievements
+      </h3>
+      <span
+        style={{
+          marginLeft: "auto",
+          background: "#FEF3C7",
+          color: "#92400E",
+          borderRadius: 99,
+          padding: "2px 10px",
+          fontSize: 11,
+          fontWeight: 600,
+          fontFamily: "'DM Sans', sans-serif",
+        }}
+      >
+        {achievements.length} awards
+      </span>
+    </div>
+
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+        gap: 10,
+      }}
+    >
       {achievements.map((ach, i) => (
         <div
           key={i}
-          className="flex items-start gap-4 bg-white bg-opacity-80 backdrop-blur-md border border-blue-200 rounded-xl p-5 shadow-lg hover:scale-[1.02] transition-all duration-200 ease-in-out"
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: 12,
+            padding: "13px 15px",
+            background: "#F8FAFC",
+            borderRadius: 12,
+            border: "1px solid #E2E8F0",
+          }}
         >
-          <CheckCircle2 className="text-blue-600 mt-1 shrink-0" size={24} />
-          <p className="text-gray-900 text-base leading-relaxed">{ach}</p>
+          <div
+            style={{
+              width: 28,
+              height: 28,
+              borderRadius: "50%",
+              background: "#FEF3C7",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+              fontSize: 13,
+            }}
+          >
+            🏆
+          </div>
+          <p
+            style={{
+              margin: 0,
+              fontSize: 13,
+              color: "#0F172A",
+              fontWeight: 500,
+              lineHeight: 1.5,
+              fontFamily: "'DM Sans', sans-serif",
+            }}
+          >
+            {ach}
+          </p>
         </div>
       ))}
     </div>
-  </section>
+  </div>
 );

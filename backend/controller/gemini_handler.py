@@ -27,8 +27,15 @@ system_prompt = """
         "state": "<state or region>",
         "teams": ["<team1>", "<team2>"]
       },
-      "background": "<concise but detailed cricket journey, style, milestones>"
+      "jersey_number": "<number or null>",
+      "background": "<concise but detailed cricket journey, style, milestones like Icc Tournamet wine, ipl wins, any tournament wininnig movement, his contribution in win 1st is icc then IPL then any ipl like tournament eaxmple BBL, PSL, CPL etc. and the players contribution in that win, any record breaking performance in that tournament, any special awards in that tournament, any special recognition in that tournament, any special moment in that tournament. But most important is to add the tropihes and awards won by the player in his career. like virat is won u19 world 2008-9, 2011 world cup, 2013 Champions tropy, then recently 2024 t20 world cup and many more. so add all the tropihes and awards won by the player in his career along woth Asia cups and all no tropies of bilaterral sereies.>"
     },
+    comparisons: [
+      player_name1,
+      player_name2,
+      player_name3,
+      player_name4,
+      ], these player should be same skill with the player_name like batsman then bastamen and all rounder then all rounder and so on. and also add the players who are in same era and also add the players who are in different era but have similar stats and playing style. also add the players who are in different era but have similar impact on the game like for example if player_name is virat then add players like sachin tendulkar, ricky ponting, brian lara, kumar sangakkara etc. and if player_name is ms dhoni then add players like adam gilchrist, mark boucher, brad haddin, sarfaraz ahmed etc. and if player_name is jasprit bumrah then add players like waqar younis, shaheen afridi, mitchell starc, pat cummins etc not more than 5 players. 
     "player_info": {
       "role": "<batsman|bowler|all-rounder|wicketkeeper>",
       "batting_handedness": "<right-hand|left-hand>",
@@ -59,6 +66,33 @@ system_prompt = """
             "best": "", "economy": 0.0
           }
         ]
+        "batting_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings": 0,
+            "runs": 0,
+            "average": 0.0,
+            "strike_rate": 0.0,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": ""
+          }
+        ],
+
+        "bowling_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings_bowled": 0,
+            "wickets": 0,
+            "average": 0.0,
+            "economy": 0.0,
+            "best": "",
+            "four_wicket_hauls": 0,
+            "five_wicket_hauls": 0
+          }
+        ]
       },
       "ODI": {
         "batting": {
@@ -84,6 +118,33 @@ system_prompt = """
             "best": "", "economy": 0.0
           }
         ]
+        "batting_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings": 0,
+            "runs": 0,
+            "average": 0.0,
+            "strike_rate": 0.0,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": ""
+          }
+        ],
+
+        "bowling_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings_bowled": 0,
+            "wickets": 0,
+            "average": 0.0,
+            "economy": 0.0,
+            "best": "",
+            "four_wicket_hauls": 0,
+            "five_wicket_hauls": 0
+          }
+        ]
       },
       "T20I": {
         "batting": {
@@ -107,6 +168,33 @@ system_prompt = """
           {
             "opponent": "<Team>", "matches": 0, "wickets": 0, "average": 0.0,
             "best": "", "economy": 0.0
+          }
+        ]
+        "batting_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings": 0,
+            "runs": 0,
+            "average": 0.0,
+            "strike_rate": 0.0,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": ""
+          }
+        ],
+
+        "bowling_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings_bowled": 0,
+            "wickets": 0,
+            "average": 0.0,
+            "economy": 0.0,
+            "best": "",
+            "four_wicket_hauls": 0,
+            "five_wicket_hauls": 0
           }
         ]
       },
@@ -137,7 +225,34 @@ system_prompt = """
           }
           // Include an entry for **every international opponent team** faced in bowling,
           // and similarly for all IPL teams bowled against.
+        ]"batting_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings": 0,
+            "runs": 0,
+            "average": 0.0,
+            "strike_rate": 0.0,
+            "fifties": 0,
+            "hundreds": 0,
+            "high_score": ""
+          }
+        ],
+
+        "bowling_by_year": [
+          {
+            "year": "<YYYY>",
+            "matches": 0,
+            "innings_bowled": 0,
+            "wickets": 0,
+            "average": 0.0,
+            "economy": 0.0,
+            "best": "",
+            "four_wicket_hauls": 0,
+            "five_wicket_hauls": 0
+          }
         ]
+        // Include an entry for **every year** of the player's career in each format, with corresponding stats.
         ]
       }
     },
@@ -166,7 +281,7 @@ system_prompt = """
 """
 
 model = genai.GenerativeModel(
-    model_name="gemini-2.5-flash-preview-05-20",
+    model_name="gemini-2.5-flash",  
     system_instruction=system_prompt
 )
 
@@ -188,17 +303,15 @@ def extract_json_from_text(text: str) -> dict:
         else:
             raise ValueError("No JSON found in response")
 
-    try:
-        json_str = json_str.encode('utf-8').decode('unicode_escape')
-    except Exception:
-        pass  
-
     return json.loads(json_str)
 
 def get_player_stats(player_name: str) -> dict:
     try:
         response = model.generate_content(player_name)
         raw_text = response.text.strip()
+        print("\n========== RAW GEMINI RESPONSE START ==========\n")
+        print(raw_text)
+        print("\n========== RAW GEMINI RESPONSE END ==========\n")
 
         data = extract_json_from_text(raw_text)
         return data
